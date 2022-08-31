@@ -1,0 +1,277 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+html, body {
+    height: 100%;
+}
+
+/* Set core body defaults */
+body {
+  text-rendering: optimizeSpeed;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+:root {
+    --clr-neutral-100: hsl(0, 0%, 98%);
+    --clr-neutral-400: hsl(0, 0%, 41%);
+    --clr-neutral-900: hsl(0, 0%, 8%);
+
+    --ff-primary: 'Epilogue', sans-serif;
+
+    --fw-medium: 500;
+    --fw-bold: 700;
+
+    --fs-300: 0.875rem;
+    --fs-400: 1rem;
+    --fs-500: 1.125rem;
+    --fs-600: 1.5rem;
+    --fs-700: 1.75rem;
+    --fs-800: 2rem
+}
+
+*,
+*::before,
+*::after {
+    font-family: var(--ff-primary);
+}
+
+li {
+    list-style-type: none;
+}
+
+/* header */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+}
+
+header .flex-container {
+    gap: 4rem;
+}
+
+.brand-logo {
+    padding-top: 0.25rem;
+}
+
+nav {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+
+}
+
+.nav-item.drop-down {
+    cursor: pointer;
+}
+
+.nav-item.drop-down li {
+    display: none;
+}
+
+.nav-item.drop-down::after {
+    content: url(/intro-section-with-dropdown-navigation-main/images/icon-arrow-down.svg);
+    padding-left: 0.4rem;
+    size: 2rem;
+}
+
+.nav-item, .account-section a {
+    color: var(--clr-neutral-400);
+}
+
+.nav-item:hover, .account-section .login-button:hover {
+    color: var(--clr-neutral-900);
+}
+
+.account-section {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.register-button {
+    padding: 0.75rem 1.25rem;
+
+    border: 2px solid var(--clr-neutral-400);
+    border-radius: 12px;
+
+    transition: all 0.1s ease;
+}
+
+.register-button:hover, .register-button:focus-within {
+    color: var(--clr-neutral-100);
+    border-color: var(--clr-neutral-900);
+    background-color: var(--clr-neutral-900);
+}
+
+/* main content*/
+
+main {
+    margin-top: 1rem;
+}
+
+.container {
+    width: 1200px;
+    margin-inline: auto;
+}
+
+.content-container {
+    padding-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.content-container > h1 {
+    font-size: 5rem;
+    line-height: 5rem;
+}
+
+.content-container > p {
+    color: var(--clr-neutral-400);
+
+    width: 45ch;
+}
+
+.content-container > a {
+    padding: 1rem 1.5rem;
+
+    max-width: 10rem;
+
+    color: var(--clr-neutral-100);
+    background-color: var(--clr-neutral-900);
+
+    border: 2px solid var(--clr-neutral-900);
+    border-radius: 12px;
+}
+
+.client-container {
+    display: flex;
+    gap: 2rem;
+}
+
+.hero-image {
+    height: 600px;
+    justify-self: right;
+}
+
+.hero-image img {
+    max-height: 100%;
+}
+
+/* Utility */
+
+.flex-container {
+    display: flex;
+}
+
+.even-columns {
+    display: grid;
+    gap: 1rem;
+}
+
+@media (min-width: 47em) {
+    .even-columns {
+        grid-auto-flow: column;
+        grid-auto-columns: 1fr;
+    }
+}
+
+@media (max-width: 47em) {
+    .hero-image {
+        order: -1;
+    }
+}
+
+.fw-medium {
+    font-weight: var(--fw-medium);
+}
+
+.fw-bold {
+    font-weight: var(--fw-bold);
+}
+
+.fs-300 {
+    font-size: var(--fs-300);
+}
+
+.fs-400 {
+    font-size: var(--fs-400);
+}
+
+.fs-500 {
+    font-size: var(--fs-500);
+}
+
+.fs-600 {
+    font-size: var(--fs-600);
+}
+
+.fs-700 {
+    font-size: var(--fs-700);
+}
+
+.fs-800 {
+    font-size: var(--fs-800);
+}
+
+.opacity-50 {
+    opacity: 50%;
+}
