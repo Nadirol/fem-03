@@ -14,37 +14,45 @@
     <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="flex-container">
-            <img src="/intro-section-with-dropdown-navigation-main/images/logo.svg" alt="" class="brand-logo">
-            <nav>
+    <header class="primary-header">
+        <a href="#" class="brand-logo">        
+            <img src="/intro-section-with-dropdown-navigation-main/images/logo.svg" alt="" >
+        </a>
+        <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+            <span class="visually-hidden">Menu</span>
+        </button>
+        <nav class="primary-navigation" aria-label="Primary" id="primary-navigation" >
+            <ul role="list" class="nav-list">
                 <ul href="#" class="nav-item drop-down fw-medium fs-400">
                     Features
                     <li>1</li>
                     <li>2</li>
                     <li>3</li>
                 </ul>
-                <ul href="#" class="nav-item  drop-down fw-medium fs-400">
+
+                <ul href="#" class="nav-item drop-down fw-medium fs-400">
                     Company
                 </ul>
                 <a href="#" class="nav-item fw-medium fs-400">Careers</a>
                 <a href="#" class="nav-item fw-medium fs-400">About</a>
-            </nav>
-        </div>
+            </ul>
+
+        </nav>
         <div class="account-section">
             <a href="" class="login-button fw-medium fs-400">Login</a>
             <a href="" class="register-button fw-medium fs-400">Register</a>
         </div>
+
     </header>
     <main>
         <div class="container">
             <div class="even-columns">
                 <div class="content-container">
-                    <h1 class="fw-bold fs-700">Make <br> remote work</h1>
-                    <p class="fw-medium fs-500">Get your team in sync, no matter your location. Streamline processes, 
+                    <h1 class="fw-bold">Make remote work</h1>
+                    <p class="fw-medium">Get your team in sync, no matter your location. Streamline processes, 
                         create team rituals, and watch productivity soar.</p>
-                    <a class="fw-medium fs-500">Learn more</a>
-                    <ul class="client-container">
+                    <a class="content-button fw-medium">Learn more</a>
+                    <ul class="client-logo-wrapper">
                         <li>
                             <img src="/intro-section-with-dropdown-navigation-main/images/client-databiz.svg" alt="">
                         </li>
@@ -60,10 +68,12 @@
                     </ul>
                 </div>
                 <div class="hero-image">
-                    <img src="/intro-section-with-dropdown-navigation-main/images/image-hero-desktop.png" alt="">
+                    <img class="hero-image-desktop" src="/intro-section-with-dropdown-navigation-main/images/image-hero-desktop.png" alt="">
+                    <img class="hero-image-mobile" src="/intro-section-with-dropdown-navigation-main/images/image-hero-mobile.png" alt="">
                 </div>
             </div>
         </div>
     </main>
+    <script src="/main.js"></script>
 </body>
 </html>
