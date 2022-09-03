@@ -96,7 +96,7 @@ li {
 
 /* header */
 
-header {
+.primary-header {
     display: flex;
     align-items: center;
     padding: 2rem;
@@ -104,32 +104,46 @@ header {
 
 .brand-logo {
     padding-top: 0.25rem;
+    padding-right: 4rem;
 }
 
 .primary-navigation {
-    margin-left: 4rem;
-
+    width: 100%;
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
+
+.mobile-nav-toggle {
+    display: none;
+  }
+  
+
 .nav-list {
     display: flex;
-    gap: 4rem;
+    gap: max(4rem, 5%);
 }
 
 .nav-item.drop-down {
     cursor: pointer;
 }
 
-.nav-item.drop-down li {
+.nav-item.drop-down[aria-expanded='false'] li {
     display: none;
+}
+
+.dropdown-item {
+    padding-top: 1rem;
 }
 
 .nav-item.drop-down::after {
     content: url(/intro-section-with-dropdown-navigation-main/images/icon-arrow-down.svg);
     padding-left: 0.4rem;
-    size: 2rem;
+}
+
+.nav-item.drop-down[aria-expanded='true']::after {
+    display: none;
 }
 
 .nav-item, .account-section a {
@@ -141,7 +155,6 @@ header {
 }
 
 .account-section {
-    margin-left: auto;
     display: flex;
     align-items: center;
     gap: 2rem;
@@ -163,9 +176,79 @@ header {
 }
 
 @media (max-width: 47em) {
-    header {
+    .primary-header {
         padding: 1rem;
     }
+
+    .primary-navigation {
+        display: none;
+
+        position: fixed;
+        padding: 2rem;
+        max-width: 20rem;
+        margin: auto;
+        inset: 7rem 1rem auto;
+        background-color: var(--clr-neutral-100);
+        border-radius: 10px;
+        box-shadow: 0 0 0.75em rgb(0, 0, 0, 0.05);
+
+        z-index: 99;
+    }
+
+    .primary-navigation[data-visible] {
+        display: block;
+      }
+    
+    .primary-navigation::after {
+    content: '';
+    position: absolute;
+    }
+
+    .nav-list {
+        display: grid;
+        gap: 2.75rem;
+        text-align: center;
+    }
+    
+    .nav-item {
+        color: var(--clr-neutral-400);
+    }
+
+    .account-section {
+        flex-direction: column;
+        margin-top: 2.75rem;
+    }
+
+    .primary-header[data-overlay]::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background-image: linear-gradient(rgb(0, 0, 0 , 0), rgb(0 ,0 , 0 , 0.8));
+        z-index: 98;
+    }
+
+    .mobile-nav-toggle {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        display: block;
+        cursor: pointer;
+        background-color: transparent;
+        border: 0;
+        padding: var(--size-200);
+        z-index: 99;
+        width: 1.65rem;
+        aspect-ratio: 1;
+    
+        background-image: url(/intro-section-with-dropdown-navigation-main/images/icon-menu.svg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+      }
+    
+      .mobile-nav-toggle[aria-expanded='true'] {
+        background-image: url(/intro-section-with-dropdown-navigation-main/images/icon-close-menu.svg);
+      }
 }
 
 /* main content*/
@@ -233,32 +316,6 @@ main {
 }
 
 @media (max-width: 47em) {
-    .primary-navigation {
-        display: none;
-
-        position: fixed;
-        padding: var(--size-700);
-        max-width: 25rem;
-        margin: auto;
-        inset: 7rem var(--size-400) auto;
-        background-color: var(--clr-neutral-100);
-        border-radius: var(--size-100);
-        box-shadow: 0 0 0.75em rgb(0, 0, 0, 0.05);
-
-        z-index: 99;
-    }
-
-    .primary-header[data-overlay]::before {
-        content: '';
-        position: fixed;
-        inset: 0;
-        background-image: linear-gradient(rgb(0, 0, 0 , 0), rgb(0 ,0 , 0 , 0.8));
-        z-index: 98;
-    }
-
-    .account-section {
-        display: none;
-    }
 
     .container {
         margin-top: 1rem;
@@ -274,18 +331,20 @@ main {
     }
 
     .content-container > h1 {
-        font-size: 2.5rem;
+        font-size: 2.25rem;
         margin-top: 2rem;
     }
 
     .content-container > p {
         font-size: var(--fs-500);
+        line-height: 2rem;
     
         margin-top: 1rem;
+
     }
 
     .content-button {
-        margin-top: 3rem;
+        margin-top: 2rem;
     }
 
     .client-logo-wrapper {

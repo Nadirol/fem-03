@@ -7,3 +7,13 @@ navToggle.addEventListener('click', () => {
     primaryNav.toggleAttribute('data-visible');
     primaryHeader.toggleAttribute('data-overlay');
 })
+
+const dropDowns = document.querySelectorAll('.drop-down');
+
+dropDowns.forEach(e => {
+    e.onclick = function() {
+        let itemVisibility = e.getAttribute('aria-expanded');
+        itemVisibility === 'true' ? e.setAttribute('aria-expanded', false) : e.setAttribute('aria-expanded', true);
+        console.log(e.getAttribute('aria-expanded'));
+    }
+})
