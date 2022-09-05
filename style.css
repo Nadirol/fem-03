@@ -125,32 +125,55 @@ li {
     gap: max(4rem, 5%);
 }
 
-.nav-item.drop-down {
+.drop-down {
+    position: relative;
+}
+
+.dropdown-button {
     cursor: pointer;
+    position: relative;
+    border: 0;
+    background: transparent;
 }
 
-.nav-item.drop-down[aria-expanded='false'] li {
-    display: none;
-}
-
-.dropdown-item {
-    padding-top: 1rem;
-}
-
-.nav-item.drop-down::after {
+.dropdown-button::after {
     content: url(/intro-section-with-dropdown-navigation-main/images/icon-arrow-down.svg);
     padding-left: 0.4rem;
 }
 
-.nav-item.drop-down[aria-expanded='true']::after {
+.dropdown-button:focus:after {
     display: none;
 }
 
-.nav-item, .account-section a {
+.dropdown-button:focus ~ .dropdown-menu {
+    opacity: 1;
+}
+
+.dropdown-menu {
+    width: max-content;
+    padding-top: 1.5rem;
+
+    background: white;
+
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+
+    opacity: 0;
+
+    transition: all 0.2s ease;
+}
+
+.dropdown-item {
+    cursor: pointer;
+    position: relative;
+}
+
+.nav-item :is(a, button), .dropdown-item, .account-section a {
     color: var(--clr-neutral-400);
 }
 
-.nav-item:hover, .account-section .login-button:hover {
+.nav-item:hover :is(a, button),  .dropdown-item:hover, .account-section .login-button:hover {
     color: var(--clr-neutral-900);
 }
 
@@ -173,6 +196,14 @@ li {
     color: var(--clr-neutral-100);
     border-color: var(--clr-neutral-900);
     background-color: var(--clr-neutral-900);
+}
+
+@media (min-width: 47em) {
+    .dropdown-menu {
+        position: absolute;
+        left: 0;
+        top: 100% + 0.25rem;
+    }
 }
 
 @media (max-width: 47em) {
@@ -200,8 +231,8 @@ li {
       }
     
     .primary-navigation::after {
-    content: '';
-    position: absolute;
+        content: '';
+        position: absolute;
     }
 
     .nav-list {
@@ -212,6 +243,17 @@ li {
     
     .nav-item {
         color: var(--clr-neutral-400);
+    }
+
+    .dropdown-menu {
+        display: none;
+        width: 100%;
+        align-items: center;
+        background-color: var(--clr-neutral-100);
+    }
+
+    .dropdown-button:focus ~ .dropdown-menu {
+        display: flex;
     }
 
     .account-section {
